@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternLib
 {
-    public class IDEContoller
+    public class HTML_IDEFactory : IDEFactory
     {
-
     }
 }

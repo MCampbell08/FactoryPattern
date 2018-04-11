@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternLib
 {
-    public class IDEFactory
+    public class WPF_IDEFactory : IDEFactory
     {
-
     }
 }
