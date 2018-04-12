@@ -40,11 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HTML_IDEFactory.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Circle.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="HTML.cs" />
     <Compile Include="IDE.cs" />
-    <Compile Include="IDEFactory.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WPF_IDEFactory.cs" />
+    <Compile Include="Textbox.cs" />
+    <Compile Include="UI_Component.cs" />
+    <Compile Include="WPF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

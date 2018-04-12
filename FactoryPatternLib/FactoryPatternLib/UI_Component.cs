@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternLib
 {
-    public abstract class IDEFactory
+    public abstract class UI_Component
     {
-        public abstract void Compile();
-        public abstract void Display();
+
     }
 }

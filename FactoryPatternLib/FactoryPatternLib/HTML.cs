@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternLib
 {
-    public class WPF_IDEFactory : IDEFactory
+    public class HTML : Language
     {
         public override void Compile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void CreateComponent()
         {
             throw new NotImplementedException();
         }

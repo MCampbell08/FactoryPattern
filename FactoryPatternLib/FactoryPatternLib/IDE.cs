@@ -8,8 +8,8 @@ namespace FactoryPatternLib
 {
     public class IDE
     {
-        private IDEFactory _IDEFactory { get; set; }
-        public IDE(IDEFactory iDEFactory)
+        private Language _IDEFactory { get; set; }
+        public IDE(Language iDEFactory)
         {
             _IDEFactory = iDEFactory;
         }
