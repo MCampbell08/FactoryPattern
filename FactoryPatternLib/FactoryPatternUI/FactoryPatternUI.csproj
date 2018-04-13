@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FactoryPatternLib\FactoryPatternLib.csproj">
+      <Project>{0eacd2f2-4ba8-48fc-a493-1cc2fa8f649c}</Project>
+      <Name>FactoryPatternLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

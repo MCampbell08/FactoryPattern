@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FactoryPatternLib.Enums;
 
 namespace FactoryPatternUI
 {
@@ -24,8 +25,19 @@ namespace FactoryPatternUI
         {
             InitializeComponent();
         }
+        private void InitializeUIObjects()
+        {
+            ListBox availableListBox = this.availableComponentsListBox;
+            List<string> availableListBoxItems = 
 
-        private void availableComponentsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            availableComponentsListBox.DataContext = 
+        }
+
+        private void AvailableComponentsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void SelectedComponentsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
