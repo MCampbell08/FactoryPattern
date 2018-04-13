@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FactoryPatternLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,13 @@ namespace FactoryPattern
     {
         public static void Main(string[] args)
         {
-            UserInterface userInterface = new UserInterface();
+            //UserInterface userInterface = new UserInterface();
 
-            userInterface.Run();
+            //userInterface.Run();
+
+            HTML l = new HTML();
+            l.Compile();
+            l.Display();
         }
     }
 }

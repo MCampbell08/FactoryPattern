@@ -26,9 +26,9 @@ namespace FactoryPatternLib
 
         public override void CreateComponent()
         {
-            foreach(Component comp in Components)
-            {
-                switch (comp)
+            for (int x = 0; x < Components.Count; x++)
+            { 
+                switch (Components[x].Item1)
                 {
                     case Component.BUTTON:
                         Button button = new Button();
@@ -48,7 +48,7 @@ namespace FactoryPatternLib
 
         public override void Display()
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Process.Start("C:\\Users\\Blake\\Documents\\FactoryPattern\\FactoryPatternLib\\FactoryPattern\\bin\\testFile.html");
         }   
     }
 }
