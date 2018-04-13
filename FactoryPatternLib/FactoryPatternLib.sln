@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPatternLib", "FactoryPatternLib\FactoryPatternLib.csproj", "{0EACD2F2-4BA8-48FC-A493-1CC2FA8F649C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPattern", "FactoryPattern\FactoryPattern.csproj", "{545494FB-2DC1-4080-831B-370BAB2656D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPatternUI", "FactoryPatternUI\FactoryPatternUI.csproj", "{2FB9122B-8368-49EB-8D70-CFBF7184A225}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{0EACD2F2-4BA8-48FC-A493-1CC2FA8F649C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EACD2F2-4BA8-48FC-A493-1CC2FA8F649C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EACD2F2-4BA8-48FC-A493-1CC2FA8F649C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{545494FB-2DC1-4080-831B-370BAB2656D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{545494FB-2DC1-4080-831B-370BAB2656D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{545494FB-2DC1-4080-831B-370BAB2656D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{545494FB-2DC1-4080-831B-370BAB2656D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB9122B-8368-49EB-8D70-CFBF7184A225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB9122B-8368-49EB-8D70-CFBF7184A225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB9122B-8368-49EB-8D70-CFBF7184A225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB9122B-8368-49EB-8D70-CFBF7184A225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
