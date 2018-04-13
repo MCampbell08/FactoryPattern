@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FactoryPatternLib
+namespace FactoryPatternLib.Enums
 {
-    class Button : UI_Component
+    public enum Language
     {
+        HTML,
+        WPF
     }
 }

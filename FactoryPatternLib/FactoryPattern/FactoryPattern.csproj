@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0EACD2F2-4BA8-48FC-A493-1CC2FA8F649C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FactoryPatternLib</RootNamespace>
-    <AssemblyName>FactoryPatternLib</AssemblyName>
+    <ProjectGuid>{545494FB-2DC1-4080-831B-370BAB2656D4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FactoryPattern</RootNamespace>
+    <AssemblyName>FactoryPattern</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,18 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Button.cs" />
-    <Compile Include="Components\Circle.cs" />
-    <Compile Include="Enums\Component.cs" />
-    <Compile Include="Enums\Language.cs" />
-    <Compile Include="Languages\HTML.cs" />
-    <Compile Include="IDE.cs" />
-    <Compile Include="Components\Image.cs" />
-    <Compile Include="Languages\LanguageFactory.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\Textbox.cs" />
-    <Compile Include="Components\UI_Component.cs" />
-    <Compile Include="Languages\WPF.cs" />
+    <Compile Include="UserInterface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FactoryPatternLib\FactoryPatternLib.csproj">
+      <Project>{0eacd2f2-4ba8-48fc-a493-1cc2fa8f649c}</Project>
+      <Name>FactoryPatternLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

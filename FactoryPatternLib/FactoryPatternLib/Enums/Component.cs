@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace FactoryPatternLib
 {
-    public abstract class UI_Component
+    public enum Component
     {
-
+        TEXTBOX,
+        BUTTON,
+        CIRCLE,
+        IMAGE,
+        NULL
     }
 }
