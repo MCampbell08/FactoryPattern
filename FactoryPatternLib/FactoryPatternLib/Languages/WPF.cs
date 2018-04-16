@@ -8,7 +8,7 @@ namespace FactoryPatternLib
 {
     public class WPF : LanguageFactory
     {
-        public override List<Tuple<Component, double, double, string, double, double>> Components { get => Components; set => Components = value; }
+        public override List<Tuple<Enums.Component, double, double, string, double, double>> Components { get => Components; set => Components = value; }
 
         public override void Compile()
         {

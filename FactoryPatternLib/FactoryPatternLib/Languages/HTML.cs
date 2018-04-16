@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FactoryPatternLib.Enums;
 
 namespace FactoryPatternLib
 {
@@ -22,7 +24,7 @@ namespace FactoryPatternLib
             }
         }
 
-        public override List<Tuple<Component, double, double, string, double, double>> Components { get => Components; set => Components = value; }
+        public override List<Tuple<Enums.Component, double, double, string, double, double>> Components { get => Components; set => Components = value; }
 
         public override void CreateComponent()
         {
@@ -30,16 +32,16 @@ namespace FactoryPatternLib
             { 
                 switch (Components[x].Item1)
                 {
-                    case Component.BUTTON:
+                    case Enums.Component.BUTTON:
                         Button button = new Button();
                         break;
-                    case Component.CIRCLE:
+                    case Enums.Component.CIRCLE:
                         Circle circle = new Circle();
                         break;
-                    case Component.IMAGE:
+                    case Enums.Component.IMAGE:
                         Image image = new Image();
                         break;
-                    case Component.TEXTBOX:
+                    case Enums.Component.TEXTBOX:
                         Textbox textbox = new Textbox();
                         break;
                 }

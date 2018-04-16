@@ -8,7 +8,7 @@ namespace FactoryPatternLib
 {
     public abstract class LanguageFactory
     {
-        public abstract List<Tuple<Component, double, double, string, double, double>> Components { get; set; }
+        public abstract List<Tuple<Enums.Component, double, double, string, double, double>> Components { get; set; }
         public abstract void Compile();
         public abstract void Display();
         public abstract void CreateComponent();

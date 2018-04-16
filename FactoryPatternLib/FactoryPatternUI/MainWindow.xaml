@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryPatternUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="550">
+        Title="MainWindow" Height="350" Width="550"
+        ResizeMode="NoResize">
     <Grid Name="languageGrid">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -24,8 +25,8 @@
             </Grid.ColumnDefinitions>
 
             <Label Name="componentLabel" Margin="200,5,200,130" Height="25" Content="Components" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
-            <Button Name="addComponentButton" Height="25" Width="50" Content="Add" Margin="50,5,50, 120" Grid.Column="0"></Button>
-            <Button Name="removeComponentButton" Height="25" Width="50" Content="Remove" Margin="50,5,50, 120" Grid.Column="1"></Button>
+            <Button Name="addComponentButton" Height="25" Width="50" Content="Add" Margin="50,5,50, 120" Grid.Column="0" Click="AddComponentButton_Click"></Button>
+            <Button Name="removeComponentButton" Height="25" Width="80" Content="Edit/Remove" Margin="50,5,50, 120" Grid.Column="1" Click="Edit_RemoveComponentButton_Click"></Button>
             <ListBox Name="availableComponentsListBox" Width="150" Height="100" Margin="54,30,54,10" SelectionChanged="AvailableComponentsListBox_SelectionChanged" Grid.Column="0"/>
             <ListBox Name="selectedComponentsListBox" Width="150" Height="100" Margin="54,30,54,10" SelectionChanged="SelectedComponentsListBox_SelectionChanged" Grid.Column="1"/>
             <Button Name="runProject" Height="25" Width="50" Grid.ColumnSpan="2" Margin="50, 100, 50, 0" Content="Build"></Button>
