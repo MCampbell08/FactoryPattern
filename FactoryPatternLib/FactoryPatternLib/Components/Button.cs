@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FactoryPatternLib.Enums;
 
 namespace FactoryPatternLib
 {
     public class Button : UI_Component
     {
-        public override double TopLoc { get => TopLoc; set => TopLoc = value; }
-        public override double LeftLoc { get => LeftLoc; set => LeftLoc = value; }
-        public override string Content { get => Content; set => Content = value; }
-        public override double Height { get => Height; set => Height = value; }
-        public override double Width { get => Width; set => Width = value; }  
+        private Component component;
+        private double topLoc;
+        private double leftLoc;
+        private double height;
+        private double width;
+        private string content;
+
+        public override Component Component { get => component; set => component = value; }
+        public override double TopLoc { get => topLoc; set => topLoc = value; }
+        public override double LeftLoc { get => leftLoc; set => leftLoc = value; }
+        public override string Content { get => content; set => content = value; }
+        public override double Height { get => height; set => height = value; }
+        public override double Width { get => width; set => width = value; }  
     }
 }

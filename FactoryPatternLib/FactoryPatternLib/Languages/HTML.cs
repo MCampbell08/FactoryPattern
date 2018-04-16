@@ -6,43 +6,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FactoryPatternLib.Enums;
+using System.Collections.ObjectModel;
 
 namespace FactoryPatternLib
 {
     public class HTML : LanguageFactory
     {
+        private ObservableCollection<UI_Component> components = new ObservableCollection<UI_Component>();
+        private string componentWTags = "";
         public override void Compile()
         {
-            using (FileStream fileStream = new FileStream("../testFile.html", FileMode.Create))
+            using (FileStream fileStream = new FileStream("C:\\FactoryPattern\\FactoryPatternLib\\FactoryPatternLib\\testFile.html", FileMode.Create))
             {
                 using (StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
                 {
                     streamWriter.Write("<!DOCTYPE HTML>\n" +
                                                 "<html>\n" +
+                                                "<body>\n" +
+                                                componentWTags+
+                                                "</body>\n"+
                                                 "</html>");
                 }
             }
         }
 
-        public override List<Tuple<Enums.Component, double, double, string, double, double>> Components { get => Components; set => Components = value; }
+        public override ObservableCollection<UI_Component> Components { get => components; set => components = Components; }
 
         public override void CreateComponent()
         {
-            for (int x = 0; x < Components.Count; x++)
-            { 
-                switch (Components[x].Item1)
+            foreach (UI_Component component in Components)
+            {
+                switch (component.Component)
                 {
                     case Enums.Component.BUTTON:
-                        Button button = new Button();
+                        componentWTags += $"<button style=\" position:absolute; left:{component.LeftLoc}px; top:{component.TopLoc}px; height:{component.Height}px; width:{component.Width}px;\">{component.Content}</button>\n";
                         break;
                     case Enums.Component.CIRCLE:
-                        Circle circle = new Circle();
-                        break;
-                    case Enums.Component.IMAGE:
-                        Image image = new Image();
+                        componentWTags += $"<canvas id=\"myCanvas\"  width=\"1000\" height=\"1000\" style=\"border: 1px solid #d3d3d3;\"></canvas>\n" +
+                            $"<script>\n" +
+                            $"var c = document.getElementById('myCanvas');\n" +
+                            $"var ctx = c.getContext(\"{component.Content}\")\n" +
+                            $"ctx.beginPath();\n" +
+                            $"ctx.arc({component.LeftLoc}, {component.TopLoc}, {component.Width / 2}, 0, 2 * 3.14);\n" +
+                            $"ctx.stroke();\n" +
+                            $"</script>";
                         break;
                     case Enums.Component.TEXTBOX:
-                        Textbox textbox = new Textbox();
+                        componentWTags += $"<input type=\"text\" style=\" position:absolute; left:{component.LeftLoc}px; top:{component.TopLoc}px; height:{component.Height}px; width:{component.Width}px;\" value=\"{component.Content}\"></input>\n";
+                        break;
+                    case Enums.Component.IMAGE:
+                        componentWTags += $"<img src=\"{component.Content}\" alt=\"valid image path\"style=\" position:absolute; left:{component.LeftLoc}px; top:{component.TopLoc}px; height:{component.Height}px; width:{component.Width}px;\" ";
                         break;
                 }
             }
@@ -50,7 +63,7 @@ namespace FactoryPatternLib
 
         public override void Display()
         {
-            System.Diagnostics.Process.Start("C:\\Users\\Blake\\Documents\\FactoryPattern\\FactoryPatternLib\\FactoryPattern\\bin\\testFile.html");
+            System.Diagnostics.Process.Start("C:\\FactoryPattern\\FactoryPatternLib\\FactoryPatternLib\\testFile.html");
         }   
     }
 }

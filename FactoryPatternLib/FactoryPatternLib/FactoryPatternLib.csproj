@@ -53,5 +53,8 @@
     <Compile Include="Components\UI_Component.cs" />
     <Compile Include="Languages\WPF.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LanguageCreators\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
