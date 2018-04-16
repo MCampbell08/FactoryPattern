@@ -22,7 +22,14 @@ namespace FactoryPatternLib
 
         public override void Display()
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "csc.exe /out:WPFApplication.exe /target:winexe app.cs mainwindow.xaml.cs /reference:\"C:\\Program Files\\Reference Assemblies\\Microsoft\\Framework\\v3.0\\presentationframework.dll\" /reference:\"C:\\Program Files\\Reference Assemblies\\Microsoft\\Framework\\v3.0\\windowsbase.dll\" /reference:\"C:\\Program Files\\Reference Assemblies\\Microsoft\\Framework\\v3.0\\presentationcore.dll\"";
+            process.StartInfo = startInfo;
+            process.Start();
+            
         }
     }
 }
