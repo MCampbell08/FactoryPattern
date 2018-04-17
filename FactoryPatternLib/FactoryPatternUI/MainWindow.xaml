@@ -30,7 +30,7 @@
             <ListBox Name="availableComponentsListBox" Width="150" Height="100" Margin="54,30,54,10" SelectionChanged="AvailableComponentsListBox_SelectionChanged" Grid.Column="0"/>
             <ListBox Name="selectedComponentsListBox" Width="150" Height="100" Margin="54,30,54,10" SelectionChanged="SelectedComponentsListBox_SelectionChanged" Grid.Column="1"/>
             <Button Name="runProject" Height="25" Width="50" Grid.ColumnSpan="2" Margin="50, 100, 50, 0" Content="Build" Click="RunProject_Click"></Button>
-
+            
         </Grid>
 
 

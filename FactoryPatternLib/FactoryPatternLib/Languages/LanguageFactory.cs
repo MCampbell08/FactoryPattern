@@ -9,7 +9,7 @@ namespace FactoryPatternLib
 {
     public abstract class LanguageFactory
     {
-        public abstract ObservableCollection<UI_Component> Components { get; set; }
+        public abstract ObservableCollection<Components.Component> Components { get; set; }
         public abstract void Compile();
         public abstract void Display();
         public abstract void CreateComponent();

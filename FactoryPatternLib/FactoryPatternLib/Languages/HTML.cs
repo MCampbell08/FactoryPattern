@@ -12,7 +12,7 @@ namespace FactoryPatternLib
 {
     public class HTML : LanguageFactory
     {
-        private ObservableCollection<UI_Component> components = new ObservableCollection<UI_Component>();
+        private ObservableCollection<Components.Component> components = new ObservableCollection<Components.Component>();
         private string componentWTags = "";
         public override void Compile()
         {
@@ -30,16 +30,20 @@ namespace FactoryPatternLib
             }
         }
 
-        public override ObservableCollection<UI_Component> Components { get => components; set => components = Components; }
+        public override ObservableCollection<Components.Component> Components { get => components; set => components = Components; }
 
         public override void CreateComponent()
         {
-            foreach (UI_Component component in Components)
+            foreach (Components.Component component in Components)
             {
-                switch (component.Component)
+                if (component is Button)
                 {
-                    case Enums.Component.BUTTON:
-                        componentWTags += $"<button style=\" position:absolute; left:{component.LeftLoc}px; top:{component.TopLoc}px; height:{component.Height}px; width:{component.Width}px;\">{component.Content}</button>\n";
+                    componentWTags += $"<button style=\" position:absolute; left:{component.LeftLoc}px; top:{component.TopLoc}px; height:{component.Height}px; width:{component.Width}px;\">{component.Content}</button>\n";
+                }
+                else
+                switch (component)
+                {
+                    case Button:
                         break;
                     case Enums.Component.CIRCLE:
                         componentWTags += $"<canvas id=\"myCanvas\"  width=\"1000\" height=\"1000\" style=\"border: 1px solid #d3d3d3;\"></canvas>\n" +

@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FactoryPatternLib.Enums;
 using System.Collections.ObjectModel;
+using FactoryPatternLib.Components;
+using System.IO;
+using System.Windows.Markup;
 using FactoryPatternLib;
 
 namespace FactoryPatternUI
@@ -26,7 +29,8 @@ namespace FactoryPatternUI
         private string availableComponentSelected;
         private string selectedComponentSelected;
 
-        public ObservableCollection<UI_Component> TempComponents { get; set; }
+        public ObservableCollection<Component> TempComponents { get; set; }
+        private ComponentFactory componentFactory;
 
         public MainWindow()
         {
@@ -36,7 +40,13 @@ namespace FactoryPatternUI
         private void InitializeUIObjects()
         {
             languageBox.ItemsSource = new ObservableCollection<string>() { "HTML", "WPF" };
-            availableComponentsListBox.ItemsSource = new ObservableCollection<string>() { "Button", "Circle", "Image", "Textbox" };
+
+            if (languageBox.SelectedValue.ToString().ToLower() == "html") 
+                componentFactory = new HTMLComponentFactory();
+            else if (languageBox.SelectedValue.ToString().ToLower() == "wpf")
+                componentFactory = new WPFComponentFactory();
+
+            availableComponentsListBox.ItemsSource = componentFactory.Components();
         }
 
         private void AvailableComponentsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,15 +86,15 @@ namespace FactoryPatternUI
         public void SaveComponent(double topLoc, double leftLoc, double height, double width, string content)
         {
             if (TempComponents == null)
-                TempComponents = new ObservableCollection<UI_Component>();
+                TempComponents = new ObservableCollection<Component>();
             if (selectedComponentSelected.ToLower() == "button")
-                TempComponents.Add(new FactoryPatternLib.Button() { Component = Component.BUTTON, TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
+                TempComponents.Add(new FactoryPatternLib.Button() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
             else if (selectedComponentSelected.ToLower() == "circle")
-                TempComponents.Add(new FactoryPatternLib.Circle() { Component = Component.CIRCLE, TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
+                TempComponents.Add(new Circle() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
             else if (selectedComponentSelected.ToLower() == "textbox")
-                TempComponents.Add(new FactoryPatternLib.Textbox() { Component = Component.TEXTBOX, TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
+                TempComponents.Add(new Textbox() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
             else if (selectedComponentSelected.ToLower() == "image")
-                TempComponents.Add(new FactoryPatternLib.Image() { Component = Component.IMAGE, TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
+                TempComponents.Add(new FactoryPatternLib.Image() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
         }
 
         private void RunProject_Click(object sender, RoutedEventArgs e)
@@ -93,16 +103,24 @@ namespace FactoryPatternUI
             {
                 LanguageFactory languageFactory;
 
-                if (languageBox.SelectedIndex.ToString().ToLower() == "wpf")
+                if (languageBox.SelectedValue.ToString().ToLower().Equals("wpf"))
                     languageFactory = new WPF();
-                else
+                else 
                     languageFactory = new HTML();
 
-                foreach (UI_Component component in TempComponents)
+                foreach (Component component in TempComponents)
                     languageFactory.Components.Add(component);
                 
                 languageFactory.CreateComponent();
                 languageFactory.Compile();
+                languageFactory.Display();
+
+                if (languageFactory is WPF) {
+                    FileStream fileStream = new FileStream("C:\\FactoryPattern\\FactoryPatternLib\\FactoryPatternLib\\MainWindow.xaml", FileMode.OpenOrCreate);
+                    Window window = (Window)XamlReader.Load(fileStream);
+                    window.Show();
+                    fileStream.Close();
+                }
             }
         }
     }
