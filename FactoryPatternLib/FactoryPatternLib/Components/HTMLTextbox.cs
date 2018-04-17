@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FactoryPatternLib.Enums;
-using FactoryPatternLib.Components;
 
-namespace FactoryPatternLib
+namespace FactoryPatternLib.Components
 {
-    public class Button : Component
+    public class HTMLTextbox : Component
     {
         private double topLoc;
         private double leftLoc;
@@ -24,7 +22,7 @@ namespace FactoryPatternLib
 
         public override string ComponentString()
         {
-            return $"<Button Name=\"button\" Height=\"{Height}\" Width=\"{Width}\" Content=\"{Content}\" Margin=\"{LeftLoc}, {TopLoc}, 0, 0\"/>";
+            return $"<input type=\"text\" style=\" position:absolute; left:{LeftLoc}px; top:{TopLoc}px; height:{Height}px; width:{Width}px;\" value=\"{Content}\"></input>\n";
         }
     }
 }

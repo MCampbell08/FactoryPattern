@@ -24,7 +24,7 @@ namespace FactoryPatternLib
 
         public override string ComponentString()
         {
-            throw new NotImplementedException();
+           return $"<img src=\"{Content}\" alt=\"valid image path\"style=\" position:absolute; left:{LeftLoc}px; top:{TopLoc}px; height:{Height}px; width:{Width}px;\"";
         }
     }
 }

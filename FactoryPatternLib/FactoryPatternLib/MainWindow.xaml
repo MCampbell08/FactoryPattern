@@ -6,6 +6,6 @@ xmlns:mc= "http://schemas.openxmlformats.org/markup-compatibility/2006"
 mc:Ignorable="d"
 Title="TestWindow" Height="350" Width="550">
 <StackPanel Name="mainStackPanel">
-<TextBox Name="textbox" Height="30" Width="60" Text="data is here" Margin="30, 30, 0, 0"/><Button Name="button" Height="60" Width="120" Content="button" Margin="60, 60, 0, 0"/>
+<Button Name="button" Height="30" Width="60" Content="button" Margin="30, 30, 0, 0"/><TextBox Name="textbox" Height="60" Width="90" Text="textbox" Margin="60, 60, 0, 0"/>
 </StackPanel>
 </Window>

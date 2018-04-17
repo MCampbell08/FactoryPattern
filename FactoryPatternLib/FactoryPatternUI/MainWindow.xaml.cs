@@ -18,6 +18,7 @@ using FactoryPatternLib.Components;
 using System.IO;
 using System.Windows.Markup;
 using FactoryPatternLib;
+using System.Windows.Controls.Primitives;
 
 namespace FactoryPatternUI
 {
@@ -28,8 +29,10 @@ namespace FactoryPatternUI
     {
         private string availableComponentSelected;
         private string selectedComponentSelected;
+        private string selectedLanguaged;
 
         public ObservableCollection<Component> TempComponents { get; set; }
+        public ObservableCollection<Component> Components { get; set; }
         private ComponentFactory componentFactory;
 
         public MainWindow()
@@ -40,13 +43,7 @@ namespace FactoryPatternUI
         private void InitializeUIObjects()
         {
             languageBox.ItemsSource = new ObservableCollection<string>() { "HTML", "WPF" };
-
-            if (languageBox.SelectedValue.ToString().ToLower() == "html") 
-                componentFactory = new HTMLComponentFactory();
-            else if (languageBox.SelectedValue.ToString().ToLower() == "wpf")
-                componentFactory = new WPFComponentFactory();
-
-            availableComponentsListBox.ItemsSource = componentFactory.Components();
+            availableComponentsListBox.ItemsSource = new ObservableCollection<string>() { "Button", "Textbox", "Circle", "Image" };
         }
 
         private void AvailableComponentsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,43 +82,47 @@ namespace FactoryPatternUI
         }
         public void SaveComponent(double topLoc, double leftLoc, double height, double width, string content)
         {
-            if (TempComponents == null)
-                TempComponents = new ObservableCollection<Component>();
-            if (selectedComponentSelected.ToLower() == "button")
-                TempComponents.Add(new FactoryPatternLib.Button() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
-            else if (selectedComponentSelected.ToLower() == "circle")
-                TempComponents.Add(new Circle() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
-            else if (selectedComponentSelected.ToLower() == "textbox")
-                TempComponents.Add(new Textbox() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
-            else if (selectedComponentSelected.ToLower() == "image")
-                TempComponents.Add(new FactoryPatternLib.Image() {TopLoc = topLoc, LeftLoc = leftLoc, Height = height, Width = width, Content = content });
+            if (componentFactory != null) {
+                if (Components == null)
+                    Components = new ObservableCollection<Component>();
+
+                if (selectedComponentSelected.ToLower() == "button")
+                    Components.Add(componentFactory.CreateComponent(FactoryPatternLib.Enums.Components.Button, height, width, topLoc, leftLoc, content));
+                else if (selectedComponentSelected.ToLower() == "circle")
+                    Components.Add(componentFactory.CreateComponent(FactoryPatternLib.Enums.Components.Circle, height, width, topLoc, leftLoc, content));
+                else if (selectedComponentSelected.ToLower() == "textbox")
+                    Components.Add(componentFactory.CreateComponent(FactoryPatternLib.Enums.Components.Textbox, height, width, topLoc, leftLoc, content));
+                else if (selectedComponentSelected.ToLower() == "image")
+                    Components.Add(componentFactory.CreateComponent(FactoryPatternLib.Enums.Components.Image, height, width, topLoc, leftLoc, content));
+            }
+            else
+            {
+                ObservableCollection<string> list = (ObservableCollection<string>)selectedComponentsListBox.ItemsSource;
+
+                list.Remove(selectedComponentsListBox.SelectedValue.ToString());
+                selectedComponentsListBox.ItemsSource = list;
+            }
         }
 
         private void RunProject_Click(object sender, RoutedEventArgs e)
         {
-            if(TempComponents.Count > 0 && languageBox.SelectedIndex != -1)
+            if(Components.Count > 0 && languageBox.SelectedIndex != -1)
             {
-                LanguageFactory languageFactory;
-
-                if (languageBox.SelectedValue.ToString().ToLower().Equals("wpf"))
-                    languageFactory = new WPF();
-                else 
-                    languageFactory = new HTML();
-
-                foreach (Component component in TempComponents)
-                    languageFactory.Components.Add(component);
-                
-                languageFactory.CreateComponent();
-                languageFactory.Compile();
-                languageFactory.Display();
-
-                if (languageFactory is WPF) {
-                    FileStream fileStream = new FileStream("C:\\FactoryPattern\\FactoryPatternLib\\FactoryPatternLib\\MainWindow.xaml", FileMode.OpenOrCreate);
-                    Window window = (Window)XamlReader.Load(fileStream);
-                    window.Show();
-                    fileStream.Close();
-                }
+                componentFactory.Compile(Components);
+                componentFactory.Display();
             }
+        }
+
+        private void LanguageBox_Selected(object sender, RoutedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)e.Source;
+            if ((selectedLanguaged = comboBox.SelectedValue.ToString().ToLower()) == "wpf")
+                componentFactory = new WPFComponentFactory();
+            else if ((selectedLanguaged = comboBox.SelectedValue.ToString().ToLower()) == "html")
+                componentFactory = new HTMLComponentFactory();
+            
+            if(Components != null)
+                Components.Clear();
         }
     }
 }

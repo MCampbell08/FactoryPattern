@@ -24,7 +24,14 @@ namespace FactoryPatternLib
 
         public override string ComponentString()
         {
-            throw new NotImplementedException();
+            return $"<canvas id=\"myCanvas\"  width=\"1000\" height=\"1000\" style=\"border: 1px solid #d3d3d3;\"></canvas>\n" +
+                            $"<script>\n" +
+                            $"var c = document.getElementById('myCanvas');\n" +
+                            $"var ctx = c.getContext(\"{Content}\")\n" +
+                            $"ctx.beginPath();\n" +
+                            $"ctx.arc({LeftLoc}, {TopLoc}, {Width / 2}, 0, 2 * 3.14);\n" +
+                            $"ctx.stroke();\n" +
+                            $"</script>";
         }
     }
 }

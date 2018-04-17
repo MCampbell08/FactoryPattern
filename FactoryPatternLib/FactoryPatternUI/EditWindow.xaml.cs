@@ -43,9 +43,11 @@ namespace FactoryPatternUI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.SaveComponent(Double.Parse(topLocBox.Text), Double.Parse(leftLocBox.Text), Double.Parse(heightLocBox.Text), Double.Parse(widthLocBox.Text), contentLocBox.Text);
+            if (topLocBox.Text != "" && leftLocBox.Text != "" && heightLocBox.Text != "" && widthLocBox.Text != "" && contentLocBox.Text != "") {
+                mainWindow.SaveComponent(Double.Parse(topLocBox.Text), Double.Parse(leftLocBox.Text), Double.Parse(heightLocBox.Text), Double.Parse(widthLocBox.Text), contentLocBox.Text);
 
-            Close();
+                Close();
+            }
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)

@@ -24,7 +24,7 @@ namespace FactoryPatternLib
 
         public override string ComponentString()
         {
-            throw new NotImplementedException();
+            return $"<TextBox Name=\"textbox\" Height=\"{Height}\" Width=\"{Width}\" Text=\"{Content}\" Margin=\"{LeftLoc}, {TopLoc}, 0, 0\"/>";
         }
     }
 }

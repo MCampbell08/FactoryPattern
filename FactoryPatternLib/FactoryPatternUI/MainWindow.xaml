@@ -15,7 +15,7 @@
 
         <StackPanel Name="languageSelectionPanel" Grid.Row="0" >
             <Label Name="languageLabel" Height="30" Width="100" Margin="15" Content="Language" HorizontalContentAlignment="Center"></Label>
-            <ComboBox Name="languageBox" Height="25" Width="150"></ComboBox>
+            <ComboBox Name="languageBox" Height="25" Width="150" SelectionChanged="LanguageBox_Selected"></ComboBox>
         </StackPanel>
 
         <Grid Name="componentGrid" Grid.Row="1">
